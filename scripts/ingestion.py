@@ -3,6 +3,9 @@ import yfinance as yf
 from alpha_vantage.timeseries import TimeSeries
 from dotenv import load_dotenv
 import requests
+from datetime import datetime
+from pyspark.sql import SparkSession
+import pytz
 import pandas as pd
 import os
 
@@ -48,6 +51,14 @@ def fetch_tick_data(symbol = "EURUSDT", limit = 10000):
     logger.info("Success")
     return df
 
+def process_data(input_data, output_data):
+    logger.info("Processing")
+    spark = SparkSession.builder.appName("FinTS").getOrCreate()
+    df = spark.read.csv(input_data, header=True, inferSchema=True)
+    df.write.parquet(output_data)
+    spark.stop()
+    logger.info(f"Processed {input_data} to {output_data}")
+    pass
 
 if __name__ == "__main__":
 
@@ -55,5 +66,7 @@ if __name__ == "__main__":
 
     # fetch_daily_data("BMW.DE")
     # fetch_real_time_data("EURUSD", api_key)
-    fetch_tick_data()
-    
+    # fetch_tick_data()
+    process_data("data/raw/BMW.DE_daily.csv", "data/processed/BMW.DE.parquet")
+    process_data("data/raw/EURUSDT_ticks.csv", "data/processed/EURUSDT_ticks.parquet")
+ 
