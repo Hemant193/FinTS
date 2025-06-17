@@ -2,6 +2,8 @@ import logging
 import yfinance as yf
 from alpha_vantage.timeseries import TimeSeries
 from dotenv import load_dotenv
+import requests
+import pandas as pd
 import os
 
 load_dotenv()
@@ -34,10 +36,24 @@ def fetch_real_time_data(symbol, api_key):
     logger.info("Success")
     return data
 
+def fetch_tick_data(symbol = "EURUSDT", limit = 10000):
+    logger.info(f"Fetching tick data for {symbol}")
+    url = f"https://api.binance.com/api/v3/trades?symbol={symbol}&limit={limit}"
+    response = requests.get(url)
+    response.raise_for_status()
+    trades = response.json()
+    df = pd.DataFrame(trades, columns = ["time", "price", "qty"])
+    df["time"] = pd.to_datetime(df["time"], unit = "ms").dt.tz_localize('UTC').dt.tz_convert('Europe/Berlin')
+    df.to_csv(f"data/raw/{symbol}_ticks.csv", index = False)
+    logger.info("Success")
+    return df
+
+
 if __name__ == "__main__":
 
     api_key = os.getenv("API_KEY")
 
     # fetch_daily_data("BMW.DE")
-    fetch_real_time_data("EURUSD", api_key)
+    # fetch_real_time_data("EURUSD", api_key)
+    fetch_tick_data()
     
