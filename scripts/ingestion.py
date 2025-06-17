@@ -64,9 +64,9 @@ if __name__ == "__main__":
 
     api_key = os.getenv("API_KEY")
 
-    # fetch_daily_data("BMW.DE")
-    # fetch_real_time_data("EURUSD", api_key)
-    # fetch_tick_data()
+    fetch_daily_data("BMW.DE")
+    fetch_real_time_data("EURUSD", api_key)
+    fetch_tick_data()
     process_data("data/raw/BMW.DE_daily.csv", "data/processed/BMW.DE.parquet")
     process_data("data/raw/EURUSDT_ticks.csv", "data/processed/EURUSDT_ticks.parquet")
  
