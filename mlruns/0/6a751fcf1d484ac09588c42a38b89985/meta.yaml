@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/hemant/Developer/Code/finTS/mlruns/0/6a751fcf1d484ac09588c42a38b89985/artifacts
+end_time: 1750266713124
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6a751fcf1d484ac09588c42a38b89985
+run_name: luxuriant-ram-42
+run_uuid: 6a751fcf1d484ac09588c42a38b89985
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750266713117
+status: 3
+tags: []
+user_id: hemant
