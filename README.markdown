@@ -7,7 +7,6 @@ Developed as part of my Data Science Master’s, FinTS targets firms like Deutsc
 ## Features
 - **TimeSformer Model**: Transformer-based model for time-series forecasting.
 - **Data Support**: Daily data (BMW.DE: Open, High, Low, Close, Volume) and tick-level data (EURUSDT: price, qty).
-- **Explainability**: Attention heatmaps visualize model focus on features and time steps.
 - **Interactive UI**: TODO
 - **API**: FastAPI endpoints for predictions and visualizations.
 - **MLflow**: Tracks model metrics and parameters.
@@ -61,9 +60,6 @@ Developed as part of my Data Science Master’s, FinTS targets firms like Deutsc
    Access endpoints like `/predict/daily` and `/explain/tick`.
 
 
-## Example Output
-- **BMW.DE (Daily)**: Forecast ~€50–100, MAE ~€1–2
-- **EURUSDT (Tick)**: Forecast ~1.05–1.15, MAE ~0.0001
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests for bug fixes, new features, or improvements. Focus areas:
