@@ -74,4 +74,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 For questions or collaboration, reach out via GitHub Issues or email (hemishra555@gmail.com).
 
 ---
-Built with ❤️ by [Hemant] for financial forecasting enthusiasts.
+Built with ❤️ by Hemant for financial forecasting enthusiasts.
